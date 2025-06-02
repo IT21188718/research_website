@@ -49,17 +49,17 @@ const allDocuments: Record<string, { name: string; file: string }[]> = {
 
 export default function Documents() {
   const [activeTab, setActiveTab] = useState('Project Proposal');
-  const [filesLoaded, setFilesLoaded] = useState(false);
+  // const [filesLoaded, setFilesLoaded] = useState(false);
 
-  // Animate file cards when tab changes
-  useEffect(() => {
-    gsap.fromTo(
-      '.file-card',
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
-    );
-    setFilesLoaded(true);
-  }, [activeTab]);
+  // // Animate file cards when tab changes
+  // useEffect(() => {
+  //   gsap.fromTo(
+  //     '.file-card',
+  //     { opacity: 0, y: 30 },
+  //     { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
+  //   );
+  //   setFilesLoaded(true);
+  // }, [activeTab]);
 
   // Animate tab buttons when clicked
   const handleTabClick = (tab: string) => {
@@ -86,10 +86,10 @@ export default function Documents() {
               key={tab}
               onClick={() => handleTabClick(tab)}
               className={`tab-btn px-4 py-2 rounded-full text-sm font-medium transition cursor-pointer ${
-                tab === activeTab
-                  ? 'bg-blue-600 text-white shadow'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+              tab === activeTab
+              ? 'bg-blue-600 text-white shadow'
+            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+      }`}
             >
               {tab}
             </button>

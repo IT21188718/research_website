@@ -23,7 +23,7 @@ export default function Tools() {
       className="relative w-full py-20 px-6 bg-gradient-to-br from-black via-gray-900 to-black text-white scroll-mt-20"
     >
       {/* Background stars */}
-      <div className="absolute inset-0 bg-[url('/backgrounds/stars.png')] bg-cover bg-center opacity-20 z-0" />
+      {/* <div className="absolute inset-0 bg-[url('/backgrounds/stars.png')] bg-cover bg-center opacity-20 z-0" /> */}
 
       <div className="max-w-6xl mx-auto text-center relative z-10">
         <motion.h2

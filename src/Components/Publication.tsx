@@ -34,9 +34,9 @@ export default function Publication() {
     <section
       id="publicationdetails"
       className="relative w-full py-20 px-6 bg-cover bg-center text-white"
-      style={{
-        backgroundImage: "url('/images/publication-bg.jpg')", // Replace with your actual image path
-      }}
+      // style={{
+      //   backgroundImage: "url('/images/publication-bg.jpg')", // Replace with your actual image path
+      // }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-gray-800 backdrop-blur-sm z-0" />
