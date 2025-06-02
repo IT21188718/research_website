@@ -16,7 +16,7 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-bold text-gray-800">Nextgen Solution</h3>
           <p className="mt-2 text-sm">
-          "Building smarter futures with next-gen construction solutions. Developed by SLIIT students."
+          &quot;Building smarter futures with next-gen construction solutions. Developed by SLIIT students.&quot;
           </p>
           <div className="mt-3 space-y-1 text-sm">
             <p className="flex items-center gap-2"><Phone size={16} /> +94 77 5228 345</p>

@@ -53,7 +53,7 @@ export default function Introduction() {
           className="waving-subtext  sm:text-3xl font-semibold text-gray-100 mb-8"
         >
           <span className="text-black font-[var(--font-poppins)]">
-            "NextGen solution" is an innovative, user-friendly website designed to revolutionize the construction industry.
+            &quot;NextGen solution&quot; is an innovative, user-friendly website designed to revolutionize the construction industry.
           </span>
         </motion.p>
 

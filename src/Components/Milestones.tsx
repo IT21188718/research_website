@@ -1,7 +1,7 @@
 'use client';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const milestones = [
   {
@@ -90,16 +90,60 @@ const milestones = [
   },
 ];
 
+function MilestoneItem({ item, isLeft, delay }: { item: typeof milestones[0]; isLeft: boolean; delay: number }) {
+  const { ref, inView } = useInView({ threshold: 0.2 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
+    }
+  }, [inView, controls]);
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={{
+        hidden: { opacity: 0, y: isLeft ? 80 : -80 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      initial="hidden"
+      animate={controls}
+      transition={{
+        duration: 0.8,
+        ease: 'easeOut',
+        delay,
+      }}
+      className={`relative z-10 flex flex-col md:flex-row ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
+    >
+      {/* Timeline Dot */}
+      <motion.div
+        className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-cyan-300 border-4 border-white rounded-full z-10 shadow top-6"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      />
+
+      {/* Card */}
+      <div className={`md:w-1/2 px-4 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
+        <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
+          <p className="text-sm font-medium text-gray-500 mb-2">{item.date}</p>
+          <p className="text-base leading-relaxed">{item.description}</p>
+          <p className="text-sm font-semibold text-right mt-4">{item.marks}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Milestones() {
   return (
-    <section
-      id="milestones"
-      className="w-full bg-[#0b143a] text-white py-20 px-4 scroll-mt-20"
-    >
+    <section id="milestones" className="w-full bg-[#0b143a] text-white py-20 px-4 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
-          Milestones
-        </h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">Milestones</h2>
 
         <div className="relative">
           {/* Vertical Line */}
@@ -109,57 +153,7 @@ export default function Milestones() {
           <div className="flex flex-col gap-12">
             {milestones.map((item, idx) => {
               const isLeft = idx % 2 === 0;
-              const { ref, inView } = useInView({ threshold: 0.2 });
-              const controls = useAnimation();
-
-              useEffect(() => {
-                if (inView) {
-                  controls.start('visible');
-                } else {
-                  controls.start('hidden');
-                }
-              }, [inView, controls]);
-
-              return (
-                <motion.div
-                  key={idx}
-                  ref={ref}
-                  variants={{
-                    hidden: { opacity: 0, y: isLeft ? 80 : -80 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  initial="hidden"
-                  animate={controls}
-                  transition={{
-                    duration: 0.8,
-                    ease: 'easeOut',
-                    delay: idx * 0.1,
-                  }}
-                  className={`relative z-10 flex flex-col md:flex-row ${
-                    isLeft ? 'md:justify-start' : 'md:justify-end'
-                  }`}
-                >
-                  {/* Timeline Dot */}
-                  <motion.div
-                    className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-cyan-300 border-4 border-white rounded-full z-10 shadow top-6"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  />
-
-                  {/* Card */}
-                  <div className={`md:w-1/2 px-4 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
-                    <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
-                      <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
-                      <p className="text-sm font-medium text-gray-500 mb-2">
-                        {item.date}
-                      </p>
-                      <p className="text-base leading-relaxed">{item.description}</p>
-                      <p className="text-sm font-semibold text-right mt-4">{item.marks}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
+              return <MilestoneItem key={idx} item={item} isLeft={isLeft} delay={idx * 0.1} />;
             })}
           </div>
         </div>

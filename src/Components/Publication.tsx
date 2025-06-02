@@ -58,7 +58,7 @@ export default function Publication() {
         </motion.div>
 
         <motion.p variants={childVariants} className="text-xl sm:text-2xl font-medium mb-10">
-          For the Paper titled <span className="font-bold">"TRANSFORMING ONLINE EDUCATION: A COMPREHENSIVE STUDY OF PERSONALIZED LEARNING EXPERIENCE"</span>
+          For the Paper titled <span className="font-bold">&quot;TRANSFORMING ONLINE EDUCATION: A COMPREHENSIVE STUDY OF PERSONALIZED LEARNING EXPERIENCE&quot;</span>
         </motion.p>
 
         <motion.p variants={childVariants} className="text-lg sm:text-xl text-white">

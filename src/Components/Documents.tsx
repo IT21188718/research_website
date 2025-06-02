@@ -1,6 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import gsap from 'gsap'; // Import GSAP
+
 
 const allDocuments: Record<string, { name: string; file: string }[]> = {
   'Project Registration Documents': [

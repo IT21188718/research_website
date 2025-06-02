@@ -68,7 +68,7 @@ const tabContent: Record<string, JSX.Element> = {
       <div className="card bg-white text-black p-6 rounded-lg shadow-lg">
         <h3 className="font-semibold text-xl mb-3 text-center">Main Objective</h3>
         <p className="tab-paragraph text-sm">
-          To develop an "Automated Architectural Planning" system, utilizing machine learning (ML) to automatically generate architectural designs.
+          To develop an &quot; Automated Architectural Planning &quot; system, utilizing machine learning (ML) to automatically generate architectural designs.
         </p>
       </div>
       <div className="card bg-white text-black p-6 rounded-lg shadow-lg">
@@ -84,7 +84,7 @@ const tabContent: Record<string, JSX.Element> = {
             <strong>3.</strong> To maintain high performance and quick response times, ensuring the system operates efficiently under diverse conditions.
           </li>
           <li className="text-sm tab-list-item">
-            <strong>4.</strong> To incorporate real-time adjustments based on user inputs and environmental changes, enhancing the system's adaptability and precision in architectural design.
+            <strong>4.</strong> To incorporate real-time adjustments based on user inputs and environmental changes, enhancing the system&apos;s adaptability and precision in architectural design.
           </li>
         </ul>
       </div>
